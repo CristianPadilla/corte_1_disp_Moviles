@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Cuántas letras tiene tu nombre</title>
+</head>
+
+<body>
+  <p>Tu nombre es:
+    <%= nombreDelUsuario %> y tiene
+      <%= cuantas %> letras</p>
+</body>
+
+</html>
+
+
+
+<!-- Como se puede ver EJS es un módulo (hay muchos otros) que nos permite inyectar
+código JS en medio de un código html. En este caso han sido dos variables que le
+pasamos al documento desde el servidor, pero a continuación veremos algunos ejemplos
+de otras opciones de ejs que son mucho más potentes:
+
+1) Si queremos que el valor retornado del código que esté insertado se refleje en
+pantalla, tenemos que meterlo entre <%=  %>; por ejemplo si metemos <%= 2+3 %>
+el usuario verá un 5. Por cierto, esto tiene que ir en todas las líneas en las que
+haya código (línea por línea), así que si es algo que ocupe varias líneas en cada
+una de ellas tiene que haber una apertura y un cierre.
+
+2) Si queremos que se ejecute algun código javascript (una función, un cálculo,
+lo que sea) pero este no queremos mostrar el retorno por pantalla (o es solo
+lógica de programación pero no da nada que retornar), la sintaxis cambia
+ligeramente y se escribe <% %> (sin el signo igual). Por ejemplo:
+
+  <body>
+    <% if (nombreDelUsuario === 'Pepe') { %>
+      <p>Lo sentimos, estamos en huelga de Pepes y no calculamos este nombre</p>
+    <% } else { %>
+      <p>Tu nombre es: <%= nombreDelUsuario %> y tiene <%= cuantas %> letras</p>
+    <% } %>
+  </body>
+
+3) Si queremos tener un trozo de html que sea igual en varios documentos (por
+ejemplo un pie de página), o el head, o lo que sea) podemos escribir donde queramos:
+
+  <%                             %>
+     include plantillas/head.ejs
+
+  ¡Ojo!: las dos líneas de arriba son una sola, hay que meter lo que hay en la 
+  segunda línea dentro de la apertura y el cierre que están en la primera; lo
+  pongo así porque hay algo que parece ser un bug de Ejs (evalúa la validez del
+  código js aún estando comentado y da un error). En la práctica real pones el
+  include dentro de los signos que definen lo que es javascript, aquí está de
+  esta manera solo para que se vea y no dé errores.
+
+Y ejs nos insertará el código que tengamos en ese fichero (la ruta parte de la
+carpeta views, así que dentro de views deberíamos tener una carpeta "plantillas"
+con el fichero al que queramos llamar).
+-->
